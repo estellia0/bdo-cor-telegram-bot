@@ -10,6 +10,9 @@ import numpy as np
 bot = telepot.Bot('')#add telegram bot token here
 cID = 0
 previousMatch = ''
+# The screen part to capture
+chatbox = {"top": 990, "left": 61, "width": 450, "height": 50}
+pytesseract.pytesseract.tesseract_cmd = r'C:\Program Files (x86)\Tesseract-OCR\tesseract.exe'
 
 def handle(msg):
     global cID
@@ -32,13 +35,10 @@ def postprocess(im):
 MessageLoop(bot, handle).run_as_thread()
 while 1:
     with mss.mss() as sct:
-        # The screen part to capture
-        chatbox = {"top": 990, "left": 61, "width": 450, "height": 50}
         # Grab the data
         im = np.array(sct.grab(chatbox), dtype=np.uint8)
         gray = process(im)
         #cv2.imshow("Output", gray)
-        pytesseract.pytesseract.tesseract_cmd = r'C:\Program Files (x86)\Tesseract-OCR\tesseract.exe'
         text = pytesseract.image_to_string(gray)
         #cv2.waitKey(0)
         if text == previousMatch:
