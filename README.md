@@ -1,5 +1,5 @@
 # bdo-ocr-telegram-bot
-OCR bot for Black Desert Online Workers Queue, needs pytesseract, opencv, telepot and mss installed to work (refer to the each lib github on how to install them.
+OCR bot for Black Desert Online Workers Queue, needs pytesseract, opencv, telepot and mss installed to work (refer to each lib github on how to install them.
 
 Since it's an ocr bot it needs an active game window to work.
 
